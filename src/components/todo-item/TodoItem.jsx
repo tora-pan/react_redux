@@ -4,7 +4,7 @@ import "./todoItem.styles.css";
 import Checkbox from "@material-ui/core/Checkbox";
 
 import { useDispatch } from "react-redux";
-import { setCheck } from "../../features/todoSlice";
+import { setCheck, removeTodo } from "../../features/todoSlice";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -13,6 +13,10 @@ const TodoItem = ({ name, done, id }) => {
 
   const handleCheck = () => {
     dispatch(setCheck(id));
+  };
+
+  const removeCurrentTodo = () => {
+    dispatch(removeTodo(id));
   };
 
   return (
@@ -24,6 +28,9 @@ const TodoItem = ({ name, done, id }) => {
         {...label}
       />
       <p className={done ? "todo-item-done" : "todoItem-pending"}>{name}</p>
+      <button className="remove-button" onClick={removeCurrentTodo}>
+        Remove
+      </button>
     </div>
   );
 };
