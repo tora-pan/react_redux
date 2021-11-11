@@ -16,3 +16,13 @@
   text-decoration: line-through;
   opacity: 0.4;
 }
+
+.remove-button {
+  margin: 0 10px;
+  background-color: lightcoral;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  height: 30px;
+  width: 80px;
+}
