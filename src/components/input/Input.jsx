@@ -3,13 +3,14 @@ import "./input.styles.css";
 
 import { useDispatch } from "react-redux";
 import { saveTodo } from "../../features/todoSlice";
+import { setCounts } from "../../features/counterSlice";
 
 const Input = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch();
 
   const addTodo = () => {
-    
+    dispatch(setCounts());
     dispatch(
       saveTodo({
         item: input,

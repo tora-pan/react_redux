@@ -5,6 +5,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 
 import { useDispatch } from "react-redux";
 import { setCheck, removeTodo } from "../../features/todoSlice";
+import { setCompleted, setRemoval } from "../../features/counterSlice";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -13,10 +14,20 @@ const TodoItem = ({ name, done, id }) => {
 
   const handleCheck = () => {
     dispatch(setCheck(id));
+    if (done) {
+      dispatch(setCompleted("uncheck"));
+    } else {
+      dispatch(setCompleted("check"));
+    }
   };
 
   const removeCurrentTodo = () => {
     dispatch(removeTodo(id));
+    if (done) {
+      dispatch(setRemoval("wasChecked"));
+    } else {
+      dispatch(setRemoval());
+    }
   };
 
   return (
